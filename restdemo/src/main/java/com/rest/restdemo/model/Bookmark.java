@@ -21,6 +21,8 @@ public class Bookmark {
 	
 	private String description;
 	
+	private Bookmark() { }
+	
 	public Bookmark(final Account account, final String uri, final String description) {
         this.uri = uri;
         this.description = description;

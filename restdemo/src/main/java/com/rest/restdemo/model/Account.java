@@ -24,6 +24,8 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private Set<Bookmark> bookmarks = new HashSet<>();
 	
+	private Account() {}
+	
 	public Account(final String username, final String password) {
         this.username = username;
         this.password = password;
