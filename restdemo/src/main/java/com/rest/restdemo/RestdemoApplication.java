@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.rest.restdemo.model.Account;
 import com.rest.restdemo.model.Bookmark;
@@ -13,6 +14,7 @@ import com.rest.restdemo.repository.AccountRepository;
 import com.rest.restdemo.repository.BookmarkRepository;
 
 @SpringBootApplication
+@EnableAsync
 public class RestdemoApplication {
 
 	public static void main(String[] args) {

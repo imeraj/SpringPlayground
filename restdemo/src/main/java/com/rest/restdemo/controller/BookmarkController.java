@@ -1,6 +1,8 @@
 package com.rest.restdemo.controller;
 
+import com.rest.restdemo.model.Account;
 import com.rest.restdemo.model.Bookmark;
+import com.rest.restdemo.notification.NotificationService;
 import com.rest.restdemo.repository.BookmarkRepository;
 import com.rest.restdemo.repository.AccountRepository;
 
@@ -9,6 +11,9 @@ import com.rest.restdemo.exception.UserNotFoundException;
 import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +26,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequestMapping("/{userId}/bookmarks")
 public class BookmarkController {
+	private final Logger logger = LoggerFactory.getLogger(BookmarkController.class);
+	
 	private BookmarkRepository bookmarkRepository;
 	private AccountRepository accountRepository;
+	
+	@Autowired
+	private NotificationService notificationService;
 	
 	@Autowired
 	public void BookMarkController(BookmarkRepository bookmarkRepository, 
@@ -49,6 +59,7 @@ public class BookmarkController {
 		return this.accountRepository
 				.findByUsername(userId)
 				.map(account -> {
+					Account user = account;
 					Bookmark result = bookmarkRepository.save(new Bookmark(account,
 							input.getUri(), input.getDescription()));
 
@@ -56,6 +67,12 @@ public class BookmarkController {
 						.fromCurrentRequest().path("/{id}")
 						.buildAndExpand(result.getId()).toUri();
 
+					try {
+						notificationService.sendNotificatoin(user);
+					} catch (Exception e) {
+						logger.info("Error sending email: " + e.getMessage());
+					}
+					
 					return ResponseEntity.created(location).build();
 				})
 				.orElse(ResponseEntity.noContent().build());
