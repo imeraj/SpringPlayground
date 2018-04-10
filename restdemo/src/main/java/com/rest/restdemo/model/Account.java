@@ -1,5 +1,6 @@
 package com.rest.restdemo.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Account {
+public class Account implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;

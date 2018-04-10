@@ -2,6 +2,13 @@ package com.rest.restdemo;
 
 import java.util.Arrays;
 
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,13 +17,16 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.rest.restdemo.model.Account;
 import com.rest.restdemo.model.Bookmark;
+import com.rest.restdemo.notification.NotificationConsumer;
 import com.rest.restdemo.repository.AccountRepository;
 import com.rest.restdemo.repository.BookmarkRepository;
 
 @SpringBootApplication
 @EnableAsync
 public class RestdemoApplication {
-
+	public static final String topicExchangeName = "spring-boot-exchange";
+    static final String queueName = "spring-boot";
+    
 	public static void main(String[] args) {
 		SpringApplication.run(RestdemoApplication.class);
 	}
@@ -37,4 +47,33 @@ public class RestdemoApplication {
 						});
 	}
 
+    @Bean
+    Queue queue() {
+        return new Queue(queueName, false);
+    }
+
+    @Bean
+    TopicExchange exchange() {
+        return new TopicExchange(topicExchangeName);
+    }
+
+    @Bean
+    Binding binding(Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with("event-bus");
+    }
+
+    @Bean
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+            MessageListenerAdapter listenerAdapter) {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+        container.setQueueNames(queueName);
+        container.setMessageListener(listenerAdapter);
+        return container;
+    }
+
+    @Bean
+    MessageListenerAdapter listenerAdapter(NotificationConsumer consumer) {
+        return new MessageListenerAdapter(consumer, "receiveMessage");
+    }
 }
