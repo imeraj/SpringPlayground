@@ -56,7 +56,25 @@
   			<groupId>org.hibernate.javax.persistence</groupId>
     		<artifactId>hibernate-jpa-2.1-api</artifactId>
     		<version>1.0.2.Final</version>
-		</dependency>	
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+		<dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-crypto</artifactId>
+    		<version>3.1.0.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-security</artifactId>
+    		<version>2.0.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+		<dependency>
+    		<groupId>io.jsonwebtoken</groupId>
+    		<artifactId>jjwt</artifactId>
+    		<version>0.9.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

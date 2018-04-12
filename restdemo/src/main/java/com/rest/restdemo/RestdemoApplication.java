@@ -9,11 +9,13 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.rest.restdemo.model.Account;
 import com.rest.restdemo.model.Bookmark;
@@ -27,8 +29,16 @@ public class RestdemoApplication {
 	public static final String topicExchangeName = "spring-boot-exchange";
     static final String queueName = "spring-boot";
     
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
 	public static void main(String[] args) {
 		SpringApplication.run(RestdemoApplication.class);
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
@@ -39,7 +49,7 @@ public class RestdemoApplication {
 				.forEach(
 						a -> {
 							Account account = accountRepository.save(new Account(a,
-									"password"));
+								 bCryptPasswordEncoder.encode("password")));
 							bookmarkRepository.save(new Bookmark(account,
 									"http://bookmark.com/1/" + a, "A description"));
 							bookmarkRepository.save(new Bookmark(account,

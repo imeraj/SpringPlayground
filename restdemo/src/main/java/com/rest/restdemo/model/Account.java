@@ -16,10 +16,7 @@ public class Account implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String username;
-	
-	@JsonIgnore
 	private String password;
 	
 	@OneToMany(mappedBy = "account")
