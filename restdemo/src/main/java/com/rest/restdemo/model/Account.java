@@ -22,9 +22,9 @@ public class Account implements Serializable {
 	private String username;
 	private String password;
 	
-	@OneToMany(mappedBy = "account")
-	private Set<Bookmark> bookmarks = new HashSet<>();
-	
+//	@OneToMany(mappedBy = "account")
+//	private Set<Bookmark> bookmarks = new HashSet<>();
+//	
 	private Account() {}
 	
 	public Account(final String username, final String password) {

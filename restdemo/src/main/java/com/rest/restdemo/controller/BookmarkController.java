@@ -6,8 +6,10 @@ import com.rest.restdemo.notification.NotificationConsumer;
 import com.rest.restdemo.notification.NotificationData;
 import com.rest.restdemo.notification.NotificationType;
 import com.rest.restdemo.repository.BookmarkRepository;
+import com.rest.restdemo.util.DTO;
 import com.rest.restdemo.repository.AccountRepository;
 import com.rest.restdemo.RestdemoApplication;
+import com.rest.restdemo.DTO.BookmarkCreationDTO;
 import com.rest.restdemo.exception.UserNotFoundException;
 
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -58,7 +60,7 @@ public class BookmarkController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	ResponseEntity<?> add(@PathVariable String userId, @RequestBody Bookmark input) {
+	ResponseEntity<?> add(@PathVariable String userId, @DTO(BookmarkCreationDTO.class) Bookmark input) {
 		this.validateUser(userId);
 		return this.accountRepository
 				.findByUsername(userId)
@@ -68,9 +70,9 @@ public class BookmarkController {
 						
 					if (currentUser.get().getId() == account.getId()) {
 						Account user = account;
-						Bookmark result = bookmarkRepository.save(new Bookmark(account,
-							input.getUri(), input.getDescription()));
-
+						input.setAccount(account);
+						Bookmark result = bookmarkRepository.save(input);
+						
 						URI location = ServletUriComponentsBuilder
 								.fromCurrentRequest().path("/{id}")
 								.buildAndExpand(result.getId()).toUri();
