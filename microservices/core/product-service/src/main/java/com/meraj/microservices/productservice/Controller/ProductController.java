@@ -1,4 +1,4 @@
-package com.meraj.microservices.productservice.Controller;
+package com.meraj.microservices.productservice.controller;
 
 import com.meraj.microservices.productservice.model.Product;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/product")
 public class ProductController {
     @RequestMapping(method = RequestMethod.GET, value="{productId}")
-    public Product getProduct(@PathVariable int productId) {
-        return new Product(productId, "product-name", 12.3);
+    public Product getProduct(@PathVariable String productId) {
+        return new Product(productId, "car", 12.3);
     }
 }
