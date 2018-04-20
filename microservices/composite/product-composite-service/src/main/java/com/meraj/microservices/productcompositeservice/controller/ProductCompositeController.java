@@ -23,11 +23,11 @@ public class ProductCompositeController {
     @RequestMapping("/productComposite/{productId}")
     public ResponseEntity<ProductAggregated> getProduct(@PathVariable String productId) {
         ResponseEntity<List<Review>> reviewResponse =
-                restTemplate.exchange("http://localhost:8001/review/" + productId,
+                restTemplate.exchange("http://review-service/review/" + productId,
                         HttpMethod.GET, null, new ParameterizedTypeReference<List<Review>>() {
                         });
         List<Review> review = reviewResponse.getBody();
-        Product product =  restTemplate.getForObject("http://localhost:8000/product/" + productId, Product.class);
+        Product product =  restTemplate.getForObject("http://product-service/product/" + productId, Product.class);
 
         return new ResponseEntity<>(new ProductAggregated(product, review), HttpStatus.OK);
     }
