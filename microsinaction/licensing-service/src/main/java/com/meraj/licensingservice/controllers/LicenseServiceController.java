@@ -1,18 +1,26 @@
 package com.meraj.licensingservice.controllers;
 
-import com.meraj.licensingservice.model.License;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.meraj.licensingservice.models.License;
+import com.meraj.licensingservice.services.LicenseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/v1/organizations/{organizationId}/licenses")
 public class LicenseServiceController {
+    @Autowired
+    private LicenseService licenseService;
+
     @RequestMapping(value="/{licenseId}", method = RequestMethod.GET)
     public License getLicenses(
             @PathVariable("organizationId") String organizationId,
             @PathVariable("licenseId") String licenseId) {
-        return new License(licenseId, "Telco", "Seat", organizationId);
+        return licenseService.getLicense(organizationId, licenseId);
+    }
+
+    @RequestMapping(value="/",method = RequestMethod.POST)
+    public void saveLicenses(@RequestBody License license) {
+        licenseService.saveLicense(license);
     }
 }
