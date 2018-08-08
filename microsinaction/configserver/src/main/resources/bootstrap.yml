@@ -8,3 +8,5 @@ spring:
       server:
         native:
           searchLocations: file:///Users/meraj/Development/Spring/SpringPlayground/microsinaction/configserver/src/main/resources/config/licensingservice
+      encrypt:
+        enabled: false

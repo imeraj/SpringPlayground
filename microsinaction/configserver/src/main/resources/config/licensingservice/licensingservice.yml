@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: root
-    password: phoenix
+    password: "{cipher}6c092cc5f1f497c779eb4c78f02270cc56bfcf3f5a83a4c2f0ea5a843dfabd5a"
     url: jdbc:mysql://localhost:3306/eagle_eye_local?useSSL=false
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
