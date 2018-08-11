@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: organizationservice
+  profile:
+    active:
+      default
+  cloud:
+    config:
+      uri: http://localhost:8888
