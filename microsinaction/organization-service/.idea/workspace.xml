@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04e75bb7-ac76-4af4-a5d3-1dd6d78cc218" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice/organizationservice.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/clients/OrganizationDiscoveryClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/models/Organization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice/licensingservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice/licensingservice.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eurekasrv/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../eurekasrv/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/java/com/meraj/organizationservice/models/Organization.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/java/com/meraj/organizationservice/repositories/OrganizationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/java/com/meraj/organizationservice/services/OrganizationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/core/organizationservice/src/main/resources/bootstrap.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/LicensingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/LicensingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/services/LicenseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/services/LicenseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/clients/OrganizationDiscoveryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/clients/OrganizationDiscoveryClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtmechanix/organization/models/Organization.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtmechanix/organization/repositories/OrganizationRepository.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -70,8 +65,10 @@
     <session id="27928907">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -118,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            <state relative-caret-position="195">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,8 +127,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/models/Organization.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="435">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -212,8 +209,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="175" />
-    <option name="y" value="22" />
+    <option name="x" value="520" />
+    <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="1016" />
   </component>
@@ -278,8 +275,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -338,16 +335,16 @@
       <updated>1533982168173</updated>
       <workItem from="1533982173841" duration="2463000" />
       <workItem from="1533984745930" duration="6000" />
-      <workItem from="1533984796679" duration="1288000" />
+      <workItem from="1533984796679" duration="1568000" />
+      <workItem from="1534334359737" duration="650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3757000" />
+    <option name="totallyTimeSpent" value="4687000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="175" y="22" width="1400" height="1016" extended-state="0" />
-    <editor active="true" />
+    <frame x="520" y="23" width="1400" height="1016" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -359,7 +356,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -412,6 +409,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/repositories/OrganizationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -439,20 +446,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/models/Organization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="435">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
