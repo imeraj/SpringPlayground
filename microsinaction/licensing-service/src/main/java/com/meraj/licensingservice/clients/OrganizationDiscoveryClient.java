@@ -27,7 +27,7 @@ public class OrganizationDiscoveryClient {
         String serviceUri = String.format("%s/v1/organizations/%s", instances.get(0).getUri().toString(), organizationId);
 
         ResponseEntity<Organization> restExchange
-                = restTemplate.exchange(serviceUri, HttpMethod.GET,null, Organization.class, organizationId);
+                = restTemplate.exchange(serviceUri, HttpMethod.GET, null, Organization.class, organizationId);
 
         return restExchange.getBody();
     }

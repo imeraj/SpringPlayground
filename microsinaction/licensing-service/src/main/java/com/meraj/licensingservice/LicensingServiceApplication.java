@@ -18,7 +18,7 @@ public class LicensingServiceApplication {
 
     @LoadBalanced
     @Bean
-    public RestTemplate getRestTemplate(){
+    public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
 }

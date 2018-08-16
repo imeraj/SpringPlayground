@@ -19,16 +19,16 @@ public class LicenseService {
     @Autowired
     OrganizationDiscoveryClient organizationDiscoveryClient;
 
-    public License getLicense(String organizationId,String licenseId) {
+    public License getLicense(String organizationId, String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
         Organization org = organizationDiscoveryClient.getOrganization(organizationId);
 
         return license
-                .withOrganizationName( org.getName())
-                .withContactName( org.getContactName())
-                .withContactEmail( org.getContactEmail() )
-                .withContactPhone( org.getContactPhone() );
+                .withOrganizationName(org.getName())
+                .withContactName(org.getContactName())
+                .withContactEmail(org.getContactEmail())
+                .withContactPhone(org.getContactPhone());
     }
 
     public void saveLicense(License license) {

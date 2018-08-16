@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/microsinaction.iml" filepath="$PROJECT_DIR$/.idea/microsinaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microsinaction.iml" filepath="$PROJECT_DIR$/microsinaction.iml" />
     </modules>
   </component>
 </project>
