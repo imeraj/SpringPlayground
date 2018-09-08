@@ -8,11 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.jcr.Node;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.net.URLConnection;
 import java.util.List;
 
 @RestController
@@ -59,15 +61,16 @@ public class RabbitController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createFile")
-    public String createNode(@RequestBody RabbitNode input) throws RepositoryException {
+    public String createNode(@RequestParam(value = "parent") String parent, @RequestParam(value = "file") MultipartFile file) throws RepositoryException {
         Session session = JackRabbitUtils.getSession(repo);
+        RabbitNode input = new RabbitNode(parent, file.getOriginalFilename(), URLConnection.guessContentTypeFromName(file.getName()));
 
         logger.error("createNode called!");
         logger.error("parentId: " + input.getParentPath());
         logger.error("filePath: " + input.getFileName());
         logger.error("mimeType: " + input.getMimeType());
 
-        Node node = jackRabbitService.createFileNode(session, input);
+        Node node = jackRabbitService.createNode(session, input, file);
         // JackRabbitUtils.cleanUp(session);
 
         return node.getIdentifier();
@@ -98,9 +101,11 @@ public class RabbitController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadNewVersion")
-    public String editNode(@RequestBody RabbitNode input) {
+    public String editNode(@RequestParam(value = "parent") String parent, @RequestParam(value = "file") MultipartFile file) {
         Session session = JackRabbitUtils.getSession(repo);
         String identifier = null;
+
+        RabbitNode input = new RabbitNode(parent, file.getOriginalFilename(), URLConnection.guessContentTypeFromName(file.getName()));
 
         logger.error("editNode called!");
         logger.error("parentId: " + input.getParentPath());
@@ -108,7 +113,7 @@ public class RabbitController {
         logger.error("mimeType: " + input.getMimeType());
 
         try {
-             identifier = jackRabbitService.editNode(session, input).getIdentifier();
+             identifier = jackRabbitService.editNode(session, input, file).getIdentifier();
         } catch (Exception e) {
             logger.error("Caught exception");
             e.printStackTrace();

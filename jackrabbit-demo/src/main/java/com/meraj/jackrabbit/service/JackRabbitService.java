@@ -1,9 +1,11 @@
 package com.meraj.jackrabbit.service;
 
 import com.meraj.jackrabbit.model.RabbitNode;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.jcr.*;
 import javax.jcr.version.Version;
@@ -18,9 +20,9 @@ import java.util.List;
 public class JackRabbitService {
     Logger logger = LoggerFactory.getLogger(JackRabbitService.class);
 
-    public Node createFileNode(Session session, RabbitNode input) {
+    public Node createNode(Session session, RabbitNode input, MultipartFile uploadFile) {
         Node node = null;
-        File file = new File(input.getFileName());
+        File file = new File(uploadFile.getOriginalFilename());
 
         try {
             if (session.itemExists(input.getParentPath())) {
@@ -28,7 +30,7 @@ public class JackRabbitService {
                 Node parentNode = session.getNode(input.getParentPath());
                 if (parentNode.hasNode(file.getName())) {
                     logger.error(file.getName() + " node already exists!");
-                    return editNode(session, input);
+                    return editNode(session, input, uploadFile);
                 } else {
                     try {
                         node = parentNode.addNode(file.getName(), "nt:file");
@@ -36,8 +38,8 @@ public class JackRabbitService {
 
                         Node content = node.addNode("jcr:content", "nt:resource");
 
-                        FileInputStream fileInputStream = new FileInputStream(file);
-                        Binary binary = session.getValueFactory().createBinary(fileInputStream);
+                        InputStream inputStream = uploadFile.getInputStream();
+                        Binary binary = session.getValueFactory().createBinary(inputStream);
 
                         content.setProperty("jcr:data", binary);
                         content.setProperty("jcr:mimeType", input.getMimeType());
@@ -46,7 +48,7 @@ public class JackRabbitService {
                         now.toInstant().toString();
                         content.setProperty("jcr:lastModified", now.toInstant().toString());
 
-                        fileInputStream.close();
+                        inputStream.close();
                         session.save();
 
                         logger.error("File saved!");
@@ -102,8 +104,8 @@ public class JackRabbitService {
         return versions;
     }
 
-    public Node editNode(Session session, RabbitNode input) {
-        File file = new File(input.getFileName());
+    public Node editNode(Session session, RabbitNode input, MultipartFile uploadFile) {
+        File file = new File(uploadFile.getOriginalFilename());
         Node returnNode = null;
 
         try {
@@ -116,9 +118,10 @@ public class JackRabbitService {
 
                 Node content = fileNode.getNode("jcr:content");
 
-                FileInputStream is = new FileInputStream(file);
+                InputStream is = uploadFile.getInputStream();
                 Binary binary = session.getValueFactory().createBinary(is);
                 content.setProperty("jcr:data", binary);
+
                 session.save();
                 is.close();
 
