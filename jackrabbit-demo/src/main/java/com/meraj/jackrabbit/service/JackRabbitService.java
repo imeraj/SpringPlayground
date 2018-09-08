@@ -1,6 +1,8 @@
 package com.meraj.jackrabbit.service;
 
+import com.meraj.jackrabbit.model.FileResponse;
 import com.meraj.jackrabbit.model.RabbitNode;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.jcr.*;
 import javax.jcr.version.Version;
+import javax.jcr.version.VersionHistory;
 import javax.jcr.version.VersionIterator;
 import javax.jcr.version.VersionManager;
 import java.io.*;
@@ -51,6 +54,9 @@ public class JackRabbitService {
                         inputStream.close();
                         session.save();
 
+                        VersionManager vm = session.getWorkspace().getVersionManager();
+                        vm.checkin(node.getPath());
+
                         logger.error("File saved!");
                     } catch (Exception e) {
                         logger.error("Exception caught!");
@@ -90,11 +96,11 @@ public class JackRabbitService {
             if (session.itemExists(filePath)) {
                 javax.jcr.version.VersionHistory versionHistory = vm.getVersionHistory(filePath);
                 Version currentVersion = vm.getBaseVersion(filePath);
-                logger.error("Current version: " + currentVersion.toString());
+                logger.error("Current version: " + currentVersion.getName());
 
-                VersionIterator versionIteratortr = versionHistory.getAllVersions();
-                while (versionIteratortr.hasNext()) {
-                    versions.add(((Version) versionIteratortr.next()).getIdentifier());
+                VersionIterator versionIterator = versionHistory.getAllVersions();
+                while (versionIterator.hasNext()) {
+                    versions.add(((Version) versionIterator.next()).getName());
                 }
             }
         } catch (Exception e) {
@@ -157,5 +163,50 @@ public class JackRabbitService {
         }
 
         return node;
+    }
+
+    public FileResponse getNode(Session session, String versionId, RabbitNode input) {
+        FileResponse response = new FileResponse();
+
+        try {
+            if (session.nodeExists(input.getParentPath() + "/" + input.getFileName())) {
+
+              //  Node file = session.getNode(input.getParentPath() + "/" + input.getFileName());
+                Node file = null;
+
+                VersionManager vm = session.getWorkspace().getVersionManager();
+                VersionHistory history = vm.getVersionHistory(input.getParentPath() + "/" + input.getFileName());
+                for (VersionIterator it = history.getAllVersions(); it.hasNext(); ) {
+                    Version version = (Version) it.next();
+                    if (versionId.equals(version.getName())) {
+                        file = version.getFrozenNode();
+                        break;
+                    }
+                }
+
+                logger.error("Node retrieved: " + file.getPath());
+
+                Node fileContent = file.getNode("jcr:content");
+                Binary bin = fileContent.getProperty("jcr:data").getBinary();
+                InputStream stream = bin.getStream();
+                byte[] bytes = IOUtils.toByteArray(stream);
+                bin.dispose();
+                stream.close();
+
+                response.setBytes(bytes);
+              //  response.setContentType(fileContent.getProperty("jcr:mimeType").getString());
+                response.setContentType(input.getMimeType());
+                return response;
+
+            } else {
+                logger.error("Node does not exist!");
+            }
+
+        } catch (Exception e) {
+            logger.error("Exception caught!");
+            e.printStackTrace();
+        }
+
+        return response;
     }
 }
