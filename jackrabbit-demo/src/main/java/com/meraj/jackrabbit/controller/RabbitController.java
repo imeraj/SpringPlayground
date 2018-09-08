@@ -13,7 +13,6 @@ import javax.jcr.Node;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.io.File;
 import java.util.List;
 
 @RestController
@@ -30,13 +29,42 @@ public class RabbitController {
     @Autowired
     JackRabbitService jackRabbitService;
 
+    @RequestMapping(method = RequestMethod.POST, value = "/createRoot")
+    public String createRoot() throws RepositoryException {
+        Session session = JackRabbitUtils.getSession(repo);
+
+        logger.error("createRoot called!");
+
+        RabbitNode input = new RabbitNode("/", "emp", "");
+        Node node = jackRabbitService.createFolderNode(session,input);
+
+        if (node == null)
+            return null;
+        else
+            return node.getIdentifier();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/createFolder")
+    public String createFolderNode(@RequestBody RabbitNode input) throws RepositoryException {
+        Session session = JackRabbitUtils.getSession(repo);
+
+        logger.error("createFolderNode called!");
+        logger.error("parentId: " + input.getParentPath());
+        logger.error("filePath: " + input.getFileName());
+        logger.error("mimeType: " + input.getMimeType());
+
+        Node node = jackRabbitService.createFolderNode(session, input);
+
+        return node.getIdentifier();
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/createFile")
     public String createNode(@RequestBody RabbitNode input) throws RepositoryException {
         Session session = JackRabbitUtils.getSession(repo);
 
         logger.error("createNode called!");
         logger.error("parentId: " + input.getParentPath());
-        logger.error("filePath: " + input.getFilePath());
+        logger.error("filePath: " + input.getFileName());
         logger.error("mimeType: " + input.getMimeType());
 
         Node node = jackRabbitService.createFileNode(session, input);
@@ -51,7 +79,7 @@ public class RabbitController {
 
         logger.error("deleteNode called!");
         logger.error("parentId: " + input.getParentPath());
-        logger.error("filePath: " + input.getFilePath());
+        logger.error("filePath: " + input.getFileName());
         logger.error("mimeType: " + input.getMimeType());
 
         return jackRabbitService.deleteNode(session, input);
@@ -63,7 +91,7 @@ public class RabbitController {
 
         logger.error("getVersionHistory called!");
         logger.error("parentId: " + input.getParentPath());
-        logger.error("filePath: " + input.getFilePath());
+        logger.error("filePath: " + input.getFileName());
         logger.error("mimeType: " + input.getMimeType());
 
         return jackRabbitService.getVersionHistory(session, input);
@@ -76,7 +104,7 @@ public class RabbitController {
 
         logger.error("editNode called!");
         logger.error("parentId: " + input.getParentPath());
-        logger.error("filePath: " + input.getFilePath());
+        logger.error("filePath: " + input.getFileName());
         logger.error("mimeType: " + input.getMimeType());
 
         try {

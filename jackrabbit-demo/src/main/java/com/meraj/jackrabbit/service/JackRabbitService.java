@@ -1,16 +1,12 @@
 package com.meraj.jackrabbit.service;
 
-import com.meraj.jackrabbit.Util.JackRabbitUtils;
-import com.meraj.jackrabbit.controller.RabbitController;
 import com.meraj.jackrabbit.model.RabbitNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.jcr.*;
-import javax.jcr.nodetype.NodeType;
 import javax.jcr.version.Version;
-import javax.jcr.version.VersionHistory;
 import javax.jcr.version.VersionIterator;
 import javax.jcr.version.VersionManager;
 import java.io.*;
@@ -24,7 +20,7 @@ public class JackRabbitService {
 
     public Node createFileNode(Session session, RabbitNode input) {
         Node node = null;
-        File file = new File(input.getFilePath());
+        File file = new File(input.getFileName());
 
         try {
             if (session.itemExists(input.getParentPath())) {
@@ -69,8 +65,8 @@ public class JackRabbitService {
 
     public boolean deleteNode(Session session, RabbitNode input) {
         try {
-            if (session.itemExists(input.getFilePath())) {
-                Node node = session.getNode(input.getFilePath());
+            if (session.itemExists(input.getFileName())) {
+                Node node = session.getNode(input.getFileName());
                 node.remove();
                 session.save();
                 return true;
@@ -88,7 +84,7 @@ public class JackRabbitService {
         try {
             VersionManager vm = session.getWorkspace().getVersionManager();
 
-            String filePath = input.getFilePath();
+            String filePath = input.getFileName();
             if (session.itemExists(filePath)) {
                 javax.jcr.version.VersionHistory versionHistory = vm.getVersionHistory(filePath);
                 Version currentVersion = vm.getBaseVersion(filePath);
@@ -107,7 +103,7 @@ public class JackRabbitService {
     }
 
     public Node editNode(Session session, RabbitNode input) {
-        File file = new File(input.getFilePath());
+        File file = new File(input.getFileName());
         Node returnNode = null;
 
         try {
@@ -135,5 +131,28 @@ public class JackRabbitService {
         }
 
         return returnNode;
+    }
+
+    public Node createFolderNode(Session session, RabbitNode input) {
+        Node node = null;
+        Node parentNode = null;
+
+        try {
+            parentNode = session.getNode(input.getParentPath());
+            if (session.nodeExists(parentNode.getPath())) {
+                if (!parentNode.hasNode(input.getFileName())) {
+                    node = parentNode.addNode(input.getFileName(), "nt:folder");
+                    session.save();
+                    logger.error("Folder created!");
+                }
+            } else {
+                logger.error("Node already exists!");
+            }
+        } catch (Exception e) {
+            logger.error("Exception caught!");
+            e.printStackTrace();
+        }
+
+        return node;
     }
 }
