@@ -1,24 +1,27 @@
 package com.meraj.jackrabbit.model;
 
 public class RabbitNode {
-    String parentPath;
+    String parentId;
     String fileName;
+    String fileId;
     String mimeType;
 
-    public RabbitNode(String parentPath, String fileName, String mimeType) {
-        this.parentPath = parentPath;
+    public RabbitNode(String parentId, String fileName, String mimeType, String fileId) {
+        this.parentId = parentId;
         this.fileName = fileName;
+        this.mimeType = mimeType;
+        this.fileId  = fileId;
     }
 
     public RabbitNode() {
     }
 
-    public String getParentPath() {
-        return parentPath;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setParentPath(String parentPath) {
-        this.parentPath = parentPath;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getFileName() {
@@ -35,5 +38,13 @@ public class RabbitNode {
 
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }

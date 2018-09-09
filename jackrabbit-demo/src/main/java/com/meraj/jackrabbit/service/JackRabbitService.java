@@ -3,7 +3,6 @@ package com.meraj.jackrabbit.service;
 import com.meraj.jackrabbit.model.FileResponse;
 import com.meraj.jackrabbit.model.RabbitNode;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,16 +27,15 @@ public class JackRabbitService {
         File file = new File(uploadFile.getOriginalFilename());
 
         try {
-            if (session.itemExists(input.getParentPath())) {
-                logger.error("Parent node found!");
-                Node parentNode = session.getNode(input.getParentPath());
-                if (parentNode.hasNode(file.getName())) {
+            Node parentNode = session.getNodeByIdentifier(input.getParentId());
+                if (parentNode != null && parentNode.hasNode(file.getName())) {
                     logger.error(file.getName() + " node already exists!");
                     return editNode(session, input, uploadFile);
                 } else {
                     try {
                         node = parentNode.addNode(file.getName(), "nt:file");
                         node.addMixin("mix:versionable");
+                        node.addMixin("mix:referenceable");
 
                         Node content = node.addNode("jcr:content", "nt:resource");
 
@@ -62,7 +60,6 @@ public class JackRabbitService {
                         logger.error("Exception caught!");
                         e.printStackTrace();
                     }
-                }
             }
         } catch (Exception e) {
             logger.error("Exception caught!");
@@ -73,8 +70,8 @@ public class JackRabbitService {
 
     public boolean deleteNode(Session session, RabbitNode input) {
         try {
-            if (session.itemExists(input.getFileName())) {
-                Node node = session.getNode(input.getFileName());
+            Node node = session.getNodeByIdentifier(input.getFileId());
+            if (node != null) {
                 node.remove();
                 session.save();
                 return true;
@@ -92,9 +89,10 @@ public class JackRabbitService {
         try {
             VersionManager vm = session.getWorkspace().getVersionManager();
 
-            String filePath = input.getFileName();
+            Node node = session.getNodeByIdentifier(input.getFileId());
+            String filePath = node.getPath();
             if (session.itemExists(filePath)) {
-                javax.jcr.version.VersionHistory versionHistory = vm.getVersionHistory(filePath);
+                VersionHistory versionHistory = vm.getVersionHistory(filePath);
                 Version currentVersion = vm.getBaseVersion(filePath);
                 logger.error("Current version: " + currentVersion.getName());
 
@@ -115,11 +113,11 @@ public class JackRabbitService {
         Node returnNode = null;
 
         try {
-            if (session.nodeExists(input.getParentPath()) && session.getNode(input.getParentPath()).hasNode(file.getName())) {
+            Node parentNode = session.getNodeByIdentifier(input.getParentId());
+            if (parentNode != null && parentNode.hasNode(file.getName())) {
                 VersionManager vm = session.getWorkspace().getVersionManager();
 
-                Node node = session.getNode(input.getParentPath());
-                Node fileNode = node.getNode(file.getName());
+                Node fileNode = parentNode.getNode(file.getName());
                 vm.checkout(fileNode.getPath());
 
                 Node content = fileNode.getNode("jcr:content");
@@ -147,10 +145,11 @@ public class JackRabbitService {
         Node parentNode = null;
 
         try {
-            parentNode = session.getNode(input.getParentPath());
+            parentNode = session.getNodeByIdentifier(input.getParentId());
             if (session.nodeExists(parentNode.getPath())) {
                 if (!parentNode.hasNode(input.getFileName())) {
                     node = parentNode.addNode(input.getFileName(), "nt:folder");
+                    node.addMixin("mix:referenceable");
                     session.save();
                     logger.error("Folder created!");
                 }
@@ -169,13 +168,10 @@ public class JackRabbitService {
         FileResponse response = new FileResponse();
 
         try {
-            if (session.nodeExists(input.getParentPath() + "/" + input.getFileName())) {
-
-              //  Node file = session.getNode(input.getParentPath() + "/" + input.getFileName());
-                Node file = null;
-
+            Node file = session.getNodeByIdentifier(input.getFileId());
+            if (file != null) {
                 VersionManager vm = session.getWorkspace().getVersionManager();
-                VersionHistory history = vm.getVersionHistory(input.getParentPath() + "/" + input.getFileName());
+                VersionHistory history = vm.getVersionHistory(file.getPath());
                 for (VersionIterator it = history.getAllVersions(); it.hasNext(); ) {
                     Version version = (Version) it.next();
                     if (versionId.equals(version.getName())) {
