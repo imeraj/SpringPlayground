@@ -7,6 +7,6 @@ spring:
     config:
       server:
         native:
-          searchLocations: file:///Users/meraj/Development/Spring/SpringPlayground/microsinaction/configserver/src/main/resources/config
+          searchLocations: file:///Users/meraj/Development/SpringPlayground/microsinaction/configserver/src/main/resources/config
       encrypt:
         enabled: false
