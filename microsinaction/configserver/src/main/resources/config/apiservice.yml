@@ -5,3 +5,4 @@ zuul:
   prefix: /api
   routes:
     licensingservice: /licensing/**
+zuul.sensitiveHeaders: Cookie,Set-Cookie

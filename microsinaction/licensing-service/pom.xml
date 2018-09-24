@@ -27,6 +27,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-rsa</artifactId>
         </dependency>
@@ -69,6 +77,7 @@
             <artifactId>hystrix-javanica</artifactId>
             <version>1.5.9</version>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>

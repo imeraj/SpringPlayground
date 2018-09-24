@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04e75bb7-ac76-4af4-a5d3-1dd6d78cc218" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/security/ResourceServerConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/main/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/main/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/test/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/test/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplicationTests.java" afterDir="false" />
@@ -21,9 +22,14 @@
       <change beforePath="$PROJECT_DIR$/../../microservices/support/edge-server/src/main/java/com/meraj/microservices/zuul/ZuulApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/edge-server/src/main/java/com/meraj/microservices/zuul/ZuulApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/support/edge-server/src/test/java/com/meraj/microservices/zuul/ZuulApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/edge-server/src/test/java/com/meraj/microservices/zuul/ZuulApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/support/turbine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/turbine/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/services/OrganizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/services/OrganizationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/apiservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/apiservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/authorizationservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/authorizationservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/LicensingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/LicensingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/clients/OrganizationDiscoveryClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/clients/OrganizationDiscoveryClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/controllers/LicenseServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../licensing-service/src/main/java/com/meraj/licensingservice/controllers/LicenseServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/application/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/application/.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/application/pom.xml" afterDir="false" />
@@ -222,8 +228,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+            <state relative-caret-position="291">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1395#1396#0" expanded="true" />
@@ -437,7 +443,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537784551930" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537792123786" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -492,12 +498,12 @@
       <workItem from="1534423001586" duration="306000" />
       <workItem from="1537698503394" duration="2507000" />
       <workItem from="1537751319273" duration="3277000" />
-      <workItem from="1537782662387" duration="1868000" />
+      <workItem from="1537782662387" duration="4290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15046000" />
+    <option name="totallyTimeSpent" value="17468000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +518,7 @@
     <frame x="492" y="23" width="1188" height="979" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3158813" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3158813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -522,7 +528,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47685185" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47685185" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -644,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        <state relative-caret-position="291">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1395#1396#0" expanded="true" />

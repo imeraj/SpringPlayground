@@ -3,7 +3,6 @@ package com.meraj.licensingservice.controllers;
 import com.meraj.licensingservice.models.License;
 import com.meraj.licensingservice.services.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
