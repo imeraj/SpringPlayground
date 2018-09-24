@@ -28,8 +28,8 @@ public class OrganizationService {
         orgRepository.save(org);
     }
 
-    public void deleteOrg(Organization org) {
-        orgRepository.deleteById(org.getId());
+    public void deleteOrg(String Id) {
+        orgRepository.deleteById(Id);
     }
 
 }
