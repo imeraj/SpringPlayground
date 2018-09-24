@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04e75bb7-ac76-4af4-a5d3-1dd6d78cc218" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../autorization-service/src/main/java/com/meraj/autorizationservice/security/OAuth2Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../autorization-service/src/main/java/com/meraj/autorizationservice/security/WebSecurityConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../autorization-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/authorizationservice.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/main/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/main/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/test/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/composite/product-composite-service/src/test/java/com/meraj/microservices/productcompositeservice/ProductCompositeServiceApplicationTests.java" afterDir="false" />
@@ -25,7 +22,12 @@
       <change beforePath="$PROJECT_DIR$/../../microservices/support/edge-server/src/main/java/com/meraj/microservices/zuul/ZuulApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/edge-server/src/main/java/com/meraj/microservices/zuul/ZuulApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/support/edge-server/src/test/java/com/meraj/microservices/zuul/ZuulApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/edge-server/src/test/java/com/meraj/microservices/zuul/ZuulApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../microservices/support/turbine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/support/turbine/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/licensingservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../configserver/src/main/resources/config/organizationservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../configserver/src/main/resources/config/organizationservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/application/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/application/.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../multimodule/application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../multimodule/application/pom.xml" afterDir="false" />
@@ -145,31 +147,59 @@
     <session id="1683806647">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
+          <entry key="java" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="193" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="193" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="208">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,11 +216,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="36" selection-start-line="36" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="452">
+              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -239,7 +269,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/services/OrganizationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="256">
               <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -275,13 +305,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/bootstrap.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/repositories/OrganizationRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/services/OrganizationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/models/Organization.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java" />
       </list>
     </option>
   </component>
@@ -298,7 +329,8 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="492" />
     <option name="y" value="23" />
     <option name="width" value="1188" />
     <option name="height" value="979" />
@@ -309,6 +341,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -365,7 +398,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -376,7 +408,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537757639546" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537783888887" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -430,12 +462,13 @@
       <workItem from="1534421192952" duration="1662000" />
       <workItem from="1534423001586" duration="306000" />
       <workItem from="1537698503394" duration="2507000" />
-      <workItem from="1537751319273" duration="2737000" />
+      <workItem from="1537751319273" duration="3277000" />
+      <workItem from="1537782662387" duration="1187000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12638000" />
+    <option name="totallyTimeSpent" value="14365000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,10 +480,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1188" height="979" extended-state="1" />
+    <frame x="492" y="23" width="1188" height="979" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31064573" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3158813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -460,7 +493,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3287037" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3287037" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -494,6 +527,16 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties" />
     <entry file="file://$PROJECT_DIR$/target/classes/application.yml" />
     <entry file="file://$PROJECT_DIR$/target/classes/bootstrap.yml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizationservice.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/controllers/OrganizationServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -526,7 +569,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/services/OrganizationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
+        <state relative-caret-position="256">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -536,9 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organizationservice.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/bootstrap.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -546,27 +586,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="452">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/security/ResourceServerConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="176">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/meraj/organizationservice/OrganizationServiceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="36" selection-start-line="36" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="208">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
