@@ -1,4 +1,5 @@
 server:
   port: 8901
 
+signing.key: "345345fsdgsf5345"
 

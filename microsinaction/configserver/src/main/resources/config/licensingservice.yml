@@ -1,5 +1,6 @@
 server:
   port: 8080
+signing.key: "345345fsdgsf5345"
 spring:
   datasource:
     username: root

@@ -1,5 +1,6 @@
 server:
   port: 8081
+signing.key: "345345fsdgsf5345"
 security:
   oauth2:
     resource:
